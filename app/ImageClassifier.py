@@ -12,7 +12,7 @@ CATEGORIES = ["NORMAL", "PNEUMONIA"]
 @st.cache_resource
 def load_model():
     model_path = hf_hub_download(
-        repo_id="rashidsamad/pneumonia-detection",  
+        repo_id="https://huggingface.co/rashidsamad/pneumonia-detection/tree/main",  
         filename="custom_pre_trained_model_10.h5"
     )
     return tf.keras.models.load_model(model_path, compile=False)
