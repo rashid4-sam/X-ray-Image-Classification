@@ -6,7 +6,6 @@ from huggingface_hub import hf_hub_download
 
 st.title('X-Ray Image Classifier')
 img_size = 100
-PRETRAINED_MODEL_PATH = "custom_pre_trained_model_10.h5"
 CATEGORIES = ["NORMAL", "PNEUMONIA"]
 
 # Load the trained model
@@ -14,7 +13,7 @@ CATEGORIES = ["NORMAL", "PNEUMONIA"]
 def load_model():
     model_path = hf_hub_download(
         repo_id="rashidsamad/pneumonia-detection",  
-        filename="PRETRAINED_MODEL_PATH"
+        filename="custom_pre_trained_model_10.h5"
     )
     return tf.keras.models.load_model(model_path, compile=False)
 
