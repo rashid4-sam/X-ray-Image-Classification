@@ -2,15 +2,23 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import tensorflow as tf
+from huggingface_hub import hf_hub_download
 
 st.title('X-Ray Image Classifier')
 img_size = 100
 PRETRAINED_MODEL_PATH = "custom_pre_trained_model_10.h5"
 CATEGORIES = ["NORMAL", "PNEUMONIA"]
 
-model = tf.keras.models.load_model(PRETRAINED_MODEL_PATH)
-print('Model Loaded')
+# Load the trained model
+@st.cache_resource
+def load_model():
+    model_path = hf_hub_download(
+        repo_id="rashidsamad/pneumonia-detection",  
+        filename="PRETRAINED_MODEL_PATH"
+    )
+    return tf.keras.models.load_model(model_path, compile=False)
 
+model = load_model()
 
 def load_classifier():
     st.subheader("Upload an X-Ray image to detect if it is Normal or Pneumonia")
