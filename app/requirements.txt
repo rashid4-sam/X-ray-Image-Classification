@@ -1,0 +1,12 @@
+streamlit
+tensorflow
+numpy
+pandas
+scikit-learn
+Pillow
+matplotlib
+xgboost
+huggingface_hub
+tensorflow
+numpy
+Pillow
